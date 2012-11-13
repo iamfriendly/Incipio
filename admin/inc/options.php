@@ -177,6 +177,12 @@
 
 		// The advanced options =============================================================
 
+		$options[] = array(
+			'name' => __('Advanced', THEMENAME ),
+			'class' => 'align-right',
+			'type' => 'heading'
+		);
+
 		do_action( 'of_set_options_in_advanced_page_end', $options );
 
 

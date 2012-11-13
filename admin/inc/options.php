@@ -289,55 +289,6 @@
 	}
 
 
-	/**
-	 * We have an option called 'user_has_read_docs'. If that option isn't set (or set to 0) then we
-	 * should only show the welcome tab with the install vid. Othwewise we show all the tabs.
-	 *
-	 * @author Richard Tape
-	 * @package Incipio
-	 * @since 1.0
-	 * @param $options - the list of all options
-	 * @return (array) $options - the list of options.
-	 */
-	
-
-	
-	function incipio_install_page( $options )
-	{
-
-		//Find out if the user has already clicked 'yes' to having read the docs
-		$read_docs = of_get_option( 'user_has_read_docs', '0' );
-
-		if( $read_docs == 0 )
-		{
-
-			//Blank the list of options
-			$options = "";
-
-			//Now add our single Welcome tab
-			$options[] = array(
-				'name' => __('Welcome', THEMENAME ),
-				'class' => '',
-				'type' => 'heading'
-			);
-
-			do_action( 'of_set_options_in_welcome_screen', $options );
-
-			return $options;
-
-		}
-		else
-		{
-
-			return $options;
-
-		}
-
-	}/* incipio_install_page() */
-
-	add_filter( 'of_options_list', 'incipio_install_page', 10, 1 );
-
-
 	/* ======================================================================================
 
 	Example for each of the different *standard* option types. Because the options panel is

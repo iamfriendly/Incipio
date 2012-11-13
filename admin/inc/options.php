@@ -177,47 +177,6 @@
 
 		// The advanced options =============================================================
 
-		$options[] = array(
-			'name' => __('Advanced', THEMENAME ),
-			'class' => 'align-right',
-			'type' => 'heading'
-		);
-
-			//All of our themes come with an install page, which shows the install screencast
-			//And asks for what options people want to allow
-			$options[] = array(
-				'name' => __('Have you read the help documentation?', THEMENAME ),
-				'desc' => __('Tick this when you have fully read and understood the help documentation', THEMENAME ),
-				'id' => 'user_has_read_docs',
-				'group' => 'install_options',
-				'std' => '0',
-				'type' => 'checkbox'
-			);
-
-			$theme_components_array = array(
-				/*'show_project' => __( 'Project Post Type', THEMENAME  ),
-				'show_faq' => __( 'FAQ Post Type', THEMENAME ),*/
-				'use_layout_builder' => __( 'Activate Layout Builder', THEMENAME ),
-				'use_contact_form' => __( 'Activate Contact Form', THEMENAME ),
-				'inform_of_updates' => __( 'Inform me when a theme update is available', THEMENAME )
-			);
-
-			$theme_components_defaults = array(
-				'use_layout_builder' => '1',
-				'use_contact_form' => '1'
-			);
-
-			$options[] = array(
-				'name' => __('Theme Components', THEMENAME ),
-				'desc' => __('Select which components of this theme you wish to activate.', THEMENAME ),
-				'id' => 'theme_components',
-				'std' => apply_filters( 'incipio_options_install_defaults', $theme_components_defaults ), // These items get checked by default
-				'type' => 'multicheck',
-				'class' => 'showontick',
-				'group' => 'install_options',
-				'options' => apply_filters( 'incipio_options_install_options', $theme_components_array )
-			);
-
 		do_action( 'of_set_options_in_advanced_page_end', $options );
 
 

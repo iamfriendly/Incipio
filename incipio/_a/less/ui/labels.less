@@ -1,0 +1,62 @@
+/* ===========================================================================================
+
+	Labels are useful. And cute. Cute useful labels.
+	
+	<p>
+		<span class="[blue red green black white] [radius round] label">Added 01/19</span> This paragraph has an inline label to let you know that it was added on January 19, 2012 courtesy of Thomas Klemm. Thanks man!
+		</p>
+
+	=========================================================================================== */
+	
+.label
+{
+	padding: 0 4px 2px;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1; 
+	white-space: nowrap;
+	display: inline;
+	position: relative;
+	bottom: 1px;
+	color: #fff;
+	background: #00a6fc;
+}
+
+.label.radius
+{
+	.border-radius(2px);
+}
+
+.label.round
+{
+	padding: 1px 7px 2px;
+	.border-radius(8px);
+}
+
+.blue.label
+{
+	background-color: @blue;
+}
+
+.red.label
+{
+	background-color: @red;
+}
+
+.green.label
+{
+	background-color: @green;
+}
+
+.white.label
+{
+	background-color: @grayLighter;
+	color: @grayDark;
+}
+
+.black.label
+{
+	background-color: @grayDarker;
+}

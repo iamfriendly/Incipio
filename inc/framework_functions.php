@@ -75,7 +75,7 @@
 		function incipio_load_css()
 		{
 			
-			$style_dir = get_template_directory_uri();
+			$style_dir = get_stylesheet_directory_uri();
 			
 			wp_enqueue_style( 'main_stylesheet', $style_dir . '/style.css', '', '', 'screen' );
 		

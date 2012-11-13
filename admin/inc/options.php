@@ -301,6 +301,7 @@
 	 */
 	
 
+	
 	function incipio_install_page( $options )
 	{
 
@@ -320,44 +321,7 @@
 				'type' => 'heading'
 			);
 
-			$options[] = array(
-				'desc' => __('<iframe src="http://player.vimeo.com/video/48003887?title=0&amp;byline=0&amp;portrait=0" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>', THEMENAME ),
-				'class' => '', //Blank, highlight, warning, vital
-				'type' => 'info'
-			);
-
-			$options[] = array(
-				'name' => __('Have you read the help documentation?', THEMENAME ),
-				'desc' => __('Tick this when you have fully read and understood the help documentation', THEMENAME ),
-				'id' => 'user_has_read_docs',
-				'group' => 'install_options',
-				'std' => '0',
-				'type' => 'checkbox'
-			);
-
-			$theme_components_array = array(
-				/*'show_project' => __( 'Project Post Type', THEMENAME  ),
-				'show_faq' => __( 'FAQ Post Type', THEMENAME ),*/
-				'use_layout_builder' => __( 'Activate Layout Builder', THEMENAME ),
-				'use_contact_form' => __( 'Activate Contact Form', THEMENAME ),
-				'inform_of_updates' => __( 'Inform me when a theme update is available', THEMENAME )
-			);
-
-			$theme_components_defaults = array(
-				'use_layout_builder' => '1',
-				'use_contact_form' => '1'
-			);
-
-			$options[] = array(
-				'name' => __('Theme Components', THEMENAME ),
-				'desc' => __('Select which components of this theme you wish to activate.  You will be able to adjust these later by going to the "Advanced" tab.', THEMENAME ),
-				'id' => 'theme_components',
-				'std' => apply_filters( 'incipio_options_install_defaults', $theme_components_defaults, $theme_components_defaults ), // These items get checked by default
-				'type' => 'multicheck',
-				'class' => 'showontick',
-				'group' => 'install_options',
-				'options' => apply_filters( 'incipio_options_install_options', $theme_components_array, $theme_components_array )
-			);
+			do_action( 'of_set_options_in_welcome_screen', $options );
 
 			return $options;
 

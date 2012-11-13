@@ -1,0 +1,38 @@
+/*
+Theme Name:     Incipio Child
+Theme URI:      #
+Description:    Child theme for Incipio
+Author:         Richard Tape
+Author URI:     http://rich.is
+Template:       incipio
+Version:        0.1.0
+*/
+
+
+	/* ======================================================================================
+
+		This is an example child theme. You will see that, above, under 'Template' we have
+		specified that it is to be a child theme of Incipio. This means that it will take on
+		all of the Incipio options and settings.
+
+		Child themes are really important for both you, our customer and for us, the 
+		developers. They allow you to make any adjustments you want to your theme without
+		affecting the 'core' (parent) theme which means we can provide updates to the core
+		theme (such as bug fixes and new features) whilst your custom modifications stay
+		in tact. They are incredibly powerful.
+
+		In order to take on the base styles from Incipio, we need to include the stylesheet
+		from that theme, we'll do that on the following line: 
+
+	====================================================================================== */
+
+	@import url( '../incipio/style.css' );
+
+
+	/* ======================================================================================
+
+	If you want to modify, remove or add your own styles then you should do so below this
+	comment block. If you wish to edit the way the theme functions, then you should take a
+	look at some examples in the functions.php file in this child theme folder.
+
+	====================================================================================== */

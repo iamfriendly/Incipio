@@ -1,0 +1,54 @@
+/* ===========================================================================================
+
+	Module
+
+	=========================================================================================== */
+	
+.module
+{
+	background: @tableBackgroundAccent;
+	padding: 3px;
+	position: relative;
+	z-index: 4;
+	margin: 0 0 20px 0;
+	.border-radius(6px);
+}
+
+	.module .inner_module
+	{
+		background: white;
+		.border-radius(3px);
+		padding: 25px 0 30px 0;
+		border: 1px solid @tableBorder;
+	}
+	
+		.module .inner_module h4
+		{
+			.sans_stack();
+			margin: 0 0 12px 0;
+			padding: 0 19px;
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: bold;
+			letter-spacing: 0.05em;
+			line-height: 1.5em;
+			color: @grayDark;
+		}
+		
+		.module .inner_module p
+		{
+			.sans_stack();
+			margin: 0 19px;
+			font-size: 15px;
+			line-height: 1.6em;
+			color: @grayLight;
+		}
+		
+
+/* ===========================================================================================
+
+	Label
+
+	=========================================================================================== */
+	
+/* All styles for this are in _a/less/ui/labels.less */

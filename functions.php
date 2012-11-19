@@ -14,7 +14,7 @@
 	====================================================================================== */
 
 	add_theme_support( 'theme-options' );
-	add_theme_support( 'layout-builder' );
+	//add_theme_support( 'layout-builder' );
 
 	//This is immediately removed if the WP SEO plugin is installed (see loader.php)
 	add_theme_support( 'incipio-seo' );

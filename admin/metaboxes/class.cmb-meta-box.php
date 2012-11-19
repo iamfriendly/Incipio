@@ -270,6 +270,9 @@ class CMB_Meta_Box {
 			if ( ! isset( $_POST[$field['id']] ) && ! isset( $_POST[$field['id']. '[]'] ) ) //TODO: fix this, checkboxes
 				continue;
 			
+			if( !isset( $field['name'] ) )
+				$field['name'] = $field['id'];
+
 			$field_obj = new $class( $field['id'], $field['name'], $value, $field );
 			$field_obj->parse_save_values();
 			$field_obj->save( $post_id );

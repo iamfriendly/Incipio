@@ -203,11 +203,10 @@
 						'Tribe_Image_Widget_builder_widget',
 						'friendly_jmpress_slider_builder_widget',
 						'WP_Widget_Text_builder_widget',
-						'WP_Widget_Price_Range_builder_widget'
+						'WP_Widget_Price_Range_builder_widget',
+						'flab_content_as_row_widget'
 						
 					);
-
-					var_dump( print_r($class) );
 	
 					if( !in_array( $class, $widgets_not_to_use_in_flab ) )
 					{

@@ -368,7 +368,7 @@
 	    		
 	    		if( function_exists( 'add_thickbox' ) ){ add_thickbox(); }
 	    		
-	    		if( function_exists( 'wp_editor' ) ){ wp_editor(); }else{ if( function_exists( 'wp_tiny_mce' ) ){ wp_tiny_mce(); } }
+	    		if( function_exists( 'wp_editor' ) ){ wp_editor( '', 'editor-builder-tab', '' ); }else{ if( function_exists( 'wp_tiny_mce' ) ){ wp_tiny_mce(); } }
 		        
 			}/* header() */
 			

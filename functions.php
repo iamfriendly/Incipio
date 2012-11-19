@@ -87,7 +87,10 @@
 	 */
 
 	$theme_data = wp_get_theme();
-	define( 'THEMENAME', $theme_data->Template );
+
+	if( !defined( 'THEMENAME' ) )
+		define( 'THEMENAME', $theme_data->Template );
+	
 	define( 'THEMEVERSION', $theme_data->Version );
 
 

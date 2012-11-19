@@ -367,8 +367,17 @@
 			{
 	    		
 	    		if( function_exists( 'add_thickbox' ) ){ add_thickbox(); }
-	    		
-	    		if( function_exists( 'wp_editor' ) ){ wp_editor( '', 'editor-builder-tab', '' ); }else{ if( function_exists( 'wp_tiny_mce' ) ){ wp_tiny_mce(); } }
+	    		if( function_exists( 'wp_tiny_mce' ) )
+	    		{
+
+	    			if( defined( 'WP_DEBUG' ) && WP_DEBUG )
+	    			{
+	    				add_filter( 'deprecated_function_trigger_error', '__return_false' );
+	    			}
+
+	    			wp_tiny_mce();
+
+	    		}
 		        
 			}/* header() */
 			

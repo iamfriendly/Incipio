@@ -260,6 +260,9 @@
 					if( substr( $flab_mod_classobject, 0, strlen( flab::config( 'prefix' ) ) ) != flab::config( 'prefix' ) )
 					{
 					
+						if( !isset( $flab_widg_object->widget_options['description'] ) )
+							$flab_widg_object->widget_options['description'] = "This space intentionally left blank";
+
 						$to_eval = '';
 						$to_eval .= 'class '.$flab_mod_classobject.'_builder_widget extends flab_wp_widget';
 						$to_eval .= '{';
@@ -364,7 +367,8 @@
 			{
 	    		
 	    		if( function_exists( 'add_thickbox' ) ){ add_thickbox(); }
-	    		if( function_exists( 'wp_tiny_mce' ) ){ wp_tiny_mce(); }
+	    		
+	    		if( function_exists( 'wp_editor' ) ){ wp_editor(); }else{ if( function_exists( 'wp_tiny_mce' ) ){ wp_tiny_mce(); } }
 		        
 			}/* header() */
 			

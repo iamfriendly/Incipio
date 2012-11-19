@@ -207,7 +207,7 @@
 						
 					);
 
-					wp_die( print_r($class) );
+					var_dump( print_r($class) );
 	
 					if( !in_array( $class, $widgets_not_to_use_in_flab ) )
 					{

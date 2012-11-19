@@ -206,6 +206,8 @@
 						'WP_Widget_Price_Range_builder_widget'
 						
 					);
+
+					wp_die( print_r($class) );
 	
 					if( !in_array( $class, $widgets_not_to_use_in_flab ) )
 					{

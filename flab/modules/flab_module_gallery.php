@@ -133,7 +133,7 @@
 									$alt = isset( $widget['image_alt'][$i] ) ? $widget['image_alt'][$i] : '';
 									
 									if( !isset( $widget['disable_lightbox'] ) || $widget['disable_lightbox'] != 'on' )
-										$output .= '<a href="'.$image.'" class="" rel="lightbox[album-'.$album.']">';
+										$output .= '<a href="'.$image.'" class="" rel="lightbox[album-'.$count.']">';
 									else
 										$output .= '<div class="nocbox">';
 									

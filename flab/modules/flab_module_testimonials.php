@@ -26,6 +26,72 @@
 			}/* __construct() */
 			
 			/* ============================================================================ */
+
+			/**
+			 * Convert the 'number' of columns to words
+			 *
+			 * long desc
+			 * @package
+			 * @author iamfriendly
+			 * @version 1.0
+			 * @since 1.0
+			 */
+	
+			public function convert_num_to_words( $number )
+			{
+				
+				if( ( $number < 0 ) || ( $number > 999999999 ) )
+			    {
+			       throw new Exception( "Number is out of range" );
+			    }
+			
+			    $Gn = floor( $number / 1000000 );  /* Millions ( giga ) */
+			    $number -= $Gn * 1000000;
+			    $kn = floor( $number / 1000 );     /* Thousands ( kilo ) */
+			    $number -= $kn * 1000;
+			    $Hn = floor( $number / 100 );      /* Hundreds ( hecto ) */
+			    $number -= $Hn * 100;
+			    $Dn = floor( $number / 10 );       /* Tens ( deca ) */
+			    $n = $number % 10;               /* Ones */ 
+			
+			    $result = ""; 
+			
+			    if( $Gn ){  $result .= number_to_words( $Gn ) . " Million";  } 
+			
+			    if( $kn ){  $result .= ( empty( $result ) ? "" : " " ) . number_to_words( $kn ) . " Thousand"; } 
+			
+			    if( $Hn ){  $result .= ( empty( $result ) ? "" : " " ) . number_to_words( $Hn ) . " Hundred";  } 
+			
+			    $ones = array( "", "One", "Two", "Three", "Four", "Five", "Six",
+			        "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
+			        "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eightteen",
+			        "Nineteen" );
+			    
+			    $tens = array( "", "", "Twenty", "Thirty", "Fourty", "Fifty", "Sixty",
+			        "Seventy", "Eigthy", "Ninety" ); 
+			
+			    if( $Dn || $n )
+			    {
+			      
+			       if( !empty( $result ) ){ $result .= " and "; } 
+			
+			       if( $Dn < 2 ){ $result .= $ones[$Dn * 10 + $n]; }
+			       else
+			       {
+			       
+						$result .= $tens[$Dn];
+						
+						if( $n ){  $result .= "-" . $ones[$n]; }
+			          
+			       }
+			       
+			    }
+			
+			    if( empty( $result ) ){  $result = "zero"; } 
+			
+			    return strtolower( $result ) ;
+				
+			}/* convert_num_to_words */
 	
 			/**
 			 * Output the contents of this widget
@@ -47,21 +113,24 @@
 					$widget['style'] = '1';
 				}
 	
+				$output .= "<div class='row display flab-testimonials'>";
+
 				$output .= '<div class="flab-widget flab-quotes '.( ( isset( $widget['style'] ) && !empty( $widget['style'] ) ) ? ' flab-quotes-'.$widget['style'] : '' ).( ( isset( $widget['classes'] ) && !empty( $widget['classes'] ) ) ? ' '.$widget['classes'] : '' ).'">'._n;
 				
-				$output .= '	<div class="flab-cols flab-cols-'.$widget['columns'].' flab-rows-'.$widget['rows'].' flab-spacing-'.( ( isset( $widget['disable_spacing'] ) && $widget['disable_spacing'] == 'on' ) ? '0' : '1' ).'">'._n;
+				$output .= '	<div class="flab-cols flab-spacing-'.( ( isset( $widget['disable_spacing'] ) && $widget['disable_spacing'] == 'on' ) ? '0' : '1' ).'">'._n;
 	
 				if( isset( $widget['testimonial_content'] ) && !empty( $widget['testimonial_content'] ) )
 				{
 					
 					$count = count( $widget['testimonial_content'] );
+					$num_of_cols_per_image = $this->convert_num_to_words( 12 / ( $count - 1 ) );
 	
 					for ( $i = 0; $i < $count; $i++ )
 					{
 						if( !empty( $widget['testimonial_author'][$i] ) || !empty( $widget['testimonial_url'][$i] ) || !empty( $widget['testimonial_content'][$i] ) )
 						{
 							
-							$output .= '		<div class="flab-col">'._n;
+							$output .= '<div class="' . $num_of_cols_per_image . ' columns">';
 							$output .= '			<div class="flab-quotes-item">'._n;
 							$output .= '				<blockquote>'.wpautop( $widget['testimonial_content'][$i] ).'</blockquote>'._n;
 	
@@ -80,6 +149,7 @@
 				}
 	
 				$output .= '	</div>'._n;
+				$output .= '</div>'._n;
 				$output .= '</div>'._n;
 	
 				return $output;

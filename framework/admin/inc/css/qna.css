@@ -1,0 +1,54 @@
+#optionsframework .section-qna .heading:hover
+{
+	cursor: pointer;
+}
+
+#optionsframework .section-qna .option .controls
+{
+	width: 95%;
+	line-height: 1.5;
+}
+
+#optionsframework .section-qna .option .controls
+{
+	padding: 2em;
+	background: rgb(248,248,248);
+	border-radius: 3px;
+	border: 1px solid rgb(243,243,248);
+}
+
+#optionsframework .section-qna .option .controls p
+{
+	margin-top: 0;
+	font-style: italic;
+}
+
+#optionsframework .section-qna .option .controls div p:last-of-type
+{
+	padding-bottom: 0;
+}
+
+#optionsframework .section-qna .heading:before
+{
+	margin-right: 1%;
+	content: "\2192 ";
+	display: block;
+	float: left;
+	width: 10px;
+}
+
+#optionsframework .section-qna:hover .heading::before
+{
+	content: "\2193";
+}
+
+#optionsframework .section-qna:nth-of-type(odd)
+{
+	background: rgb(245,245,245);
+}
+
+#optionsframework .section-qna:nth-of-type(odd) .option .controls,
+#optionsframework .section-qna:nth-of-type(odd) .option .controls .section
+{
+	background: white;
+}

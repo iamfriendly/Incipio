@@ -14,7 +14,7 @@
 	====================================================================================== */
 
 	add_theme_support( 'theme-options' );
-	//add_theme_support( 'layout-builder' );
+	add_theme_support( 'layout-builder' );
 
 	//This is immediately removed if the WP SEO plugin is installed (see loader.php)
 	add_theme_support( 'incipio-seo' );
@@ -56,12 +56,12 @@
 
 			//Also add support for our custom widgets
 			add_theme_support(	'custom-widgets', 
-			                  	array(
-			                  		'call-to-action-row', 
-			                  		'image-widget', 
-			                  		'latest-blog-posts', 
-			                  		'quick-flickr-widget'
-			                  	)
+              	array(
+              		'call-to-action-row', 
+              		'image-widget', 
+              		'latest-blog-posts', 
+              		'quick-flickr-widget'
+              	)
 			);
 
 		}/* incipio_theme_supports */
@@ -69,6 +69,7 @@
 	endif;
 
 	add_action( 'after_setup_theme', 'incipio_theme_supports' );
+
 
 
 	/* ======================================================================================
@@ -79,19 +80,73 @@
 	====================================================================================== */
 
 	/**
-	 * Set up some constants that are used throughout the theme
+	 * Set up some constants that are used throughout the theme. Have to check for get_theme_data()
+	 * to support <3.4
 	 *
 	 * @author Richard Tape
 	 * @package Incipio
 	 * @since 1.0
 	 */
 
-	$theme_data = wp_get_theme();
+	if( function_exists( 'wp_get_theme' ) )
+	{
 
-	if( !defined( 'THEMENAME' ) )
-		define( 'THEMENAME', $theme_data->Template );
-	
-	define( 'THEMEVERSION', $theme_data->Version );
+		$theme_data = wp_get_theme();
+
+		if( !defined( 'THEMENAME' ) )
+			define( 'THEMENAME', $theme_data->Template );
+		
+		if( !defined( 'THEMEVERSION' ) )
+			define( 'THEMEVERSION', $theme_data->Version );
+
+	}
+	else
+	{
+
+		$theme_data = get_theme_data( get_template_directory() . '/style.css' );
+
+		if( !defined( 'THEMENAME' ) )
+			define( 'THEMENAME', $theme_data['Template'] );
+		
+		if( !defined( 'THEMEVERSION' ) )
+			define( 'THEMEVERSION', $theme_data['Version'] );
+
+	}
+
+
+	/* =================================================================================== */
+
+	if( !function_exists( 'remove_chemistry_potion_support' ) ) :
+
+		/**
+		 * Handle the removal of potions
+		 *
+		 * @author Richard Tape
+		 * @package Chemistry
+		 * @since 0.7
+		 * @param (array) $potions_to_use - the list of all available potions
+		 * @return (array) $potions_to_use - The modified list
+		 */
+		
+		function remove_chemistry_potion_support( $potions_to_use )
+		{
+
+			//$unsupported_potions = array( 'plain_text', 'single_image' );
+			/*
+			foreach( $unsupported_potions as $potion )
+				$potions_to_use[ 'chemistry_potion_' . $potion] = false;
+
+			return $potions_to_use;
+			*/
+
+		}/* remove_chemistry_potion_support() */
+
+	endif;
+
+	//add_filter( 'chemistry_potions', 'remove_chemistry_potion_support', 10, 1 );
+
+
+	/* =================================================================================== */
 
 
 	/**
@@ -103,7 +158,10 @@
 	 */
 	
 
-	require_once locate_template( '/loader.php' );
+	require_once locate_template( '/framework/loader.php' );
+
+
+	/* =================================================================================== */
 
 
 	/**

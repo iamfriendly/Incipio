@@ -1,1 +1,0 @@
-jQuery(document).ready(function(e){e(".section-qna .option").each(function(){e(this).slideUp()}),e(".section-qna .heading").on("click",function(){var t=e(this).next(".option");t.hasClass("shown_answer")?e(this).next(".option").slideUp().removeClass("shown_answer"):e(this).next(".option").slideDown().addClass("shown_answer")})});

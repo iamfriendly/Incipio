@@ -59,9 +59,29 @@
 			<li class="lbp_widget_post_<?php echo get_the_ID(); ?> columns <?php echo incipio_convert_number_to_words( 12/$num_to_show ); ?>">
 
 				<?php if( $show_thumbnail == 1 ) : ?>
-					<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="lbp_thumb">
-						<?php the_post_thumbnail( apply_filters( 'themeists_widget_lbp_thumbnail_size', 'lbp_thumb' ) ); ?>
-					</a>
+
+					<div class="hover_block">
+
+						<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="lbp_thumb">
+						
+							<div class="box">
+
+								<?php the_post_thumbnail( apply_filters( 'themeists_widget_lbp_thumbnail_size', 'lbp_thumb' ) ); ?>
+							
+								<div class="onhover">
+									<p>
+										<span>
+											<?php echo apply_filters( 'themeists_lbp_read_more_text', 'Read More' ); ?>
+										</span>
+									</p>
+								</div><!-- .details -->
+							
+							</div>
+
+						</a>
+
+					</div><!-- .mosaic-block -->
+
 				<?php endif; ?>
 
 				

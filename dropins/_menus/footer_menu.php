@@ -1,20 +1,20 @@
 <?php
 
-	function ff_register_main_menu()
+	function ff_register_footer_menu()
 	{
 		
-		register_nav_menu( 'main-menu', __( 'Main Menu', THEMENAME ) );
+		register_nav_menu( 'footer-menu', __( 'Footer Menu', THEMENAME ) );
 		
-	}/* ff_register_main_menu() */
+	}/* ff_register_footer_menu() */
 	
 	
-	add_action( 'init', 'ff_register_main_menu' );
-	
+	add_action( 'init', 'ff_register_footer_menu' );
+
 	/* ===========================================================================================
 
 	Example Usage
 	
-	<?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+	<?php wp_nav_menu( array( 'theme_location' => 'footer-menu' ) ); ?>
 	
 	<?php
 	

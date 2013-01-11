@@ -10,12 +10,6 @@
 
 	?>
 
-	<?php do_action( 'incipio_before_main_footer_tag' ); ?>
-
-	<?php do_action( 'incipio_start_main_footer_tag' ); ?>
-
-		<?php do_action( 'incipio_inside_main_footer_tag' ); ?>
-
 	<?php wp_footer(); ?>
 	
 	<!--[if lt IE 7 ]>

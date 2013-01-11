@@ -1,40 +1,29 @@
 /*
-Theme Name: Incipio
-Theme URI: #
-Description: Incipio Starter Theme
+Theme Name: {{THEMENAME}}
+Theme URI: http:// {{THEMENAME}}.themeists.com/
+Description:  {{THEMENAME}} is a beautiful, powerful, responsive business portfolio WordPress theme from Themeists. It comes with the amazingly powerful Chemistry content editor which gives you unlimited layout possibilities.
 Author: Themeists
 Author URI: http://themeists.com/
 Version: 1.0
-
-This file won't work as part of the symlinks, but when you create your own theme based on this,
-you'll be able to set this up as a project in Codekit which will then be able to import the
-styles from the framework.
-
 */
+
+
+/* ===========================================================================================
+
+	This file is the basic styles for our framework, covering pretty much everything that we
+	need to provide basic, default styling to most elements.
+
+=========================================================================================== */
+
 
 @import 'framework/frontend/framework-frontend.less';
 
-/* ===========================================================================================
-
-	Some basic setup and overrides
-
-	=========================================================================================== */
-
-/* Theme colours */
-
-
 
 /* ===========================================================================================
 
-	Main Header
+	This one deals with this theme specifically and loads everything needed to add-to or
+	overwrite the styles from the framework above,
 
-	=========================================================================================== */
+=========================================================================================== */
 
-
-
-
-/* ===========================================================================================
-
-	Main Content
-
-	=========================================================================================== */
+@import 'assets/less/theme.less';

@@ -8,7 +8,9 @@
 	
 	$folder = "_menus/";
 	$includes = array(
+
 		'main_menu'
+
 	);
 	
 	foreach( $includes as $file_to_include )

@@ -1,16 +1,17 @@
 /*
-Theme Name: Incipio
-Theme URI: #
-Description: Incipio Starter Theme
+Theme Name: {{THEMENAME}}
+Theme URI: http:// {{THEMENAME}}.themeists.com/
+Description:  {{THEMENAME}} is a beautiful, powerful, responsive business portfolio WordPress theme from Themeists. It comes with the amazingly powerful Chemistry content editor which gives you unlimited layout possibilities.
 Author: Themeists
 Author URI: http://themeists.com/
 Version: 1.0
-
-This file won't work as part of the symlinks, but when you create your own theme based on this,
-you'll be able to set this up as a project in Codekit which will then be able to import the
-styles from the framework.
-
 */
+/* ===========================================================================================
+
+	This file is the basic styles for our framework, covering pretty much everything that we
+	need to provide basic, default styling to most elements.
+
+=========================================================================================== */
 /* ===========================================================================================
 
 	Reset by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/
@@ -670,7 +671,7 @@ img {
     padding: 20px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   /* ===========================================================================================
   
   	Framework Styles
@@ -1051,13 +1052,13 @@ h6 a {
   font-weight: inherit;
 }
 h1 {
-  font-size: 35px;
-  font-size: 3.5rem;
+  font-size: 25px;
+  font-size: 2.5rem;
   margin-bottom: 9px;
 }
 h2 {
-  font-size: 28px;
-  font-size: 2.8rem;
+  font-size: 24px;
+  font-size: 2.4rem;
   margin-bottom: 9px;
 }
 h3 {
@@ -1076,7 +1077,7 @@ h6 {
   font-size: 1.5rem;
 }
 hr {
-  border: solid #dadada;
+  border: solid #cacaca;
   border-width: 1px 0 0;
   clear: both;
   margin: 12px 0 18px;
@@ -1094,7 +1095,7 @@ dl {
   font-weight: 400;
 }
 a {
-  color: #76c38b;
+  color: #e0514b;
   -webkit-transition: all 0.3s linear;
   -moz-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
@@ -1104,7 +1105,7 @@ a {
   border-bottom: 1px dashed transparent;
 }
 a:hover {
-  color: #fb1518;
+  color: #cacaca;
 }
 pre {
   -webkit-transition: 0.3s ease-out all;
@@ -1158,7 +1159,7 @@ form .with_input {
 
 	=========================================================================================== */
 .mainmenu {
-  border-top: 1px solid #dadada;
+  border-top: 1px solid #cacaca;
 }
 /* .stylish adds the inset box shadow at the top */
 .mainmenu.stylish {
@@ -1248,7 +1249,7 @@ form .with_input {
   top: 43px;
   width: 180px;
   background: #ffffff;
-  border: 1px solid #dadada;
+  border: 1px solid #cacaca;
   -moz-box-shadow: inset 0 1px 3px 0 rgba(100, 100, 100, 0.2), 0 2px 5px 2px rgba(200, 200, 200, 0.2);
   -webkit-box-shadow: inset 0 1px 3px 0 rgba(100, 100, 100, 0.2), 0 2px 5px 2px rgba(200, 200, 200, 0.2);
   box-shadow: inset 0 1px 3px 0 rgba(100, 100, 100, 0.2), 0 2px 5px 2px rgba(200, 200, 200, 0.2);
@@ -2470,7 +2471,7 @@ textarea:focus {
 disabled */
 input.input-text[disabled],
 textarea[disabled] {
-  background-color: #dadada;
+  background-color: #cacaca;
 }
 /* Inlined Label Style */
 input.placeholder,
@@ -2517,7 +2518,7 @@ textarea.locked.expand {
 /* Fieldsets */
 form fieldset {
   padding: 9px 9px 2px 9px;
-  border: solid 1px #dadada;
+  border: solid 1px #cacaca;
   margin: 18px 0;
 }
 /* Inlined Radio & Checkbox */
@@ -2530,11 +2531,11 @@ input[type=checkbox] {
 /* Errors */
 .form-field.error input,
 input.input-text.red {
-  border-color: #fb1518;
+  border-color: #e0514b;
 }
 .form-field.error label,
 label.red {
-  color: #fb1518;
+  color: #e0514b;
 }
 .form-field.error small,
 small.error {
@@ -2542,7 +2543,7 @@ small.error {
   display: block;
   margin-bottom: 9px;
   font-size: 11px;
-  color: #fb1518;
+  color: #e0514b;
   width: 254px;
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -2624,7 +2625,7 @@ disabled */
 form.nice input[disabled],
 form.nice input.input-text[disabled],
 form.nice textarea[disabled] {
-  background-color: #dadada;
+  background-color: #cacaca;
 }
 form.nice fieldset {
   border-radius: 3px;
@@ -2640,10 +2641,10 @@ form.nice input[type=checkbox] {
 form.nice div.form-field.error small,
 form.nice small.error {
   padding: 6px 4px;
-  border: solid 0 #fb1518;
+  border: solid 0 #e0514b;
   border-width: 0 1px 1px 1px;
   margin-top: -10px;
-  background: #fb1518;
+  background: #e0514b;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -2715,7 +2716,7 @@ form.custom div.custom.dropdown a.current {
   line-height: 26px;
   min-height: 26px;
   padding: 0 38px 0 6px;
-  border: solid 1px #dadada;
+  border: solid 1px #cacaca;
   color: #222222;
   background-color: #ffffff;
   white-space: nowrap;
@@ -2728,7 +2729,7 @@ form.custom div.custom.dropdown a.selector {
   background: url(_a/images/custom-form-sprites.png) -14px 1px no-repeat;
   right: 0;
   top: 0;
-  border: solid 1px #dadada;
+  border: solid 1px #cacaca;
 }
 form.custom div.custom.dropdown:hover a.selector,
 form.custom div.custom.dropdown.open a.selector {
@@ -2743,7 +2744,7 @@ form.custom div.custom.dropdown ul {
   margin: 0;
   padding: 0;
   background: #ffffff;
-  border: solid 1px #dadada;
+  border: solid 1px #cacaca;
 }
 form.custom div.custom.dropdown ul li {
   cursor: pointer;
@@ -2800,7 +2801,7 @@ form.custom label + select + div.custom.dropdown > a.current {
 /* Custom input,
 disabled */
 form.custom .custom.disabled {
-  background-color: #dadada;
+  background-color: #cacaca;
 }
 /* -----------------------------------------
    Nicer Custom Forms
@@ -2877,13 +2878,13 @@ form.custom.nice div.custom.dropdown ul {
   background-color: #00a6fc;
 }
 .red.label {
-  background-color: #fb1518;
+  background-color: #e0514b;
 }
 .green.label {
   background-color: #76c38b;
 }
 .white.label {
-  background-color: #dadada;
+  background-color: #cacaca;
   color: #333333;
 }
 .black.label {
@@ -3004,7 +3005,7 @@ form.custom.nice div.custom.dropdown ul {
   transition: none;
 }
 dl.tabs {
-  border-bottom: solid 1px #dadada;
+  border-bottom: solid 1px #cacaca;
   display: block;
   height: 40px;
   padding: 0;
@@ -3054,8 +3055,8 @@ dl.tabs dd.active a {
   cursor: default;
   color: #000000;
   background: #ffffff;
-  border-left: 1px solid #dadada;
-  border-right: 1px solid #dadada;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
   font-weight: bold;
 }
 dl.tabs dd:first-child {
@@ -3063,7 +3064,7 @@ dl.tabs dd:first-child {
 }
 dl.tabs.vertical {
   height: auto;
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #cacaca;
 }
 dl.tabs.vertical dt,
 dl.tabs.vertical dd {
@@ -3074,7 +3075,7 @@ dl.tabs.vertical dd {
   border-left: 3px solid #999999;
 }
 dl.tabs.vertical dd a {
-  background: #dadada;
+  background: #cacaca;
   border: none;
   border: 1px solid #dddddd;
   border-width: 1px 1px 0 0;
@@ -3117,7 +3118,7 @@ ul.tabs-content.contained {
   padding: 0;
 }
 ul.tabs-content.contained > li {
-  border: solid 0 #dadada;
+  border: solid 0 #cacaca;
   border-width: 0 1px 1px 1px;
   padding: 20px;
 }
@@ -3151,7 +3152,7 @@ ul.tabs-content.contained.vertical > li {
     border-width: 1px 0 0;
     margin: 0;
     color: #999999;
-    background: #dadada;
+    background: #cacaca;
     font-size: 15px;
     font-size: 1.5 rem;
   }
@@ -3209,12 +3210,12 @@ ul.tabs-content.contained.vertical > li {
 	=========================================================================================== */
 dl.accordion dt,
 dl.accordion dd {
-  border: 1px solid #dadada;
+  border: 1px solid #cacaca;
   border-bottom: none;
 }
 dl.accordion dt:last-of-type,
 dl.accordion dd:last-of-type {
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #cacaca;
 }
 dl.accordion dt a {
   display: block;
@@ -3432,7 +3433,7 @@ table {
   text-decoration: none;
   height: 61px;
   width: 38px;
-  background: transparent url('framework/frontend/images/responsiveslides.gif') no-repeat left top;
+  background: transparent url('_a/images/responsiveslides.gif') no-repeat left top;
   margin-top: -45px;
 }
 .rslides_nav:active,
@@ -3521,9 +3522,9 @@ table {
   padding-left: 0;
 }
 .widget-title {
-  border-bottom: 4px solid #dadada;
-  font-size: 15px;
-  font-size: 1.5rem;
+  border-bottom: 4px solid #cacaca;
+  font-size: 17px;
+  font-size: 1.7rem;
   padding-bottom: 7px;
   margin-bottom: 14px;
 }
@@ -3539,7 +3540,7 @@ table {
   color: #76c38b;
   border-bottom: none;
   padding-left: 40px;
-  background: transparent url('_a/images/icon-blog.jpg') no-repeat left center;
+  background: transparent url('assets/images/icon-blog.jpg') no-repeat left center;
   min-height: 30px;
   line-height: 26px;
   padding-top: 9px;
@@ -3550,7 +3551,7 @@ table {
 }
 .widget-title.with_icon:hover,
 .full_link.with_icon:hover {
-  background-image: url('_a/images/icon-blog-hover.jpg');
+  background-image: url('assets/images/icon-blog-hover.jpg');
   color: #000000;
 }
 .widget-title.with_icon a,
@@ -3628,14 +3629,14 @@ table {
   border-color: #e9d493;
 }
 .widget-search #s:hover {
-  background-color: #dadada;
-  border-color: #dadada;
+  background-color: #cacaca;
+  border-color: #cacaca;
 }
 .widget-search #s:focus,
 .widget-search #s:active {
   outline: none;
-  background-color: #dadada;
-  border-color: #dadada;
+  background-color: #cacaca;
+  border-color: #cacaca;
 }
 .safari .widget-search #searchsubmit {
   line-height: 0;
@@ -3679,11 +3680,11 @@ table {
   clear: both;
 }
 .widget-themeists_latest_blog_posts .widget_post_title {
-  border-bottom: 4px solid #dadada;
-  font-size: 18px;
-  font-size: 1.8rem;
-  padding-bottom: 7px;
-  margin-bottom: 14px;
+  border-bottom: 4px solid #cacaca;
+  font-size: 19px;
+  font-size: 1.9rem;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
 }
 aside .widget-themeists_latest_blog_posts .lbp_post_list > li {
   float: none !important;
@@ -3714,6 +3715,9 @@ aside .widget-themeists_latest_blog_posts .widget_post_title {
 .widget-themeists_latest_blog_posts .widget_post_meta li:last-of-type {
   margin-right: 0;
 }
+.widget-themeists_latest_blog_posts .hover_block {
+  margin-bottom: 1.5em;
+}
 aside .widget-themeists_latest_blog_posts .widget_post_meta {
   margin-bottom: 1.5em;
 }
@@ -3734,10 +3738,10 @@ aside .widget-themeists_latest_blog_posts .widget_post_meta {
   background-position: 0 4px;
 }
 .widget_post_meta .lbp_comments {
-  background-image: url('_a/images/icon-comments.png');
+  background-image: url('assets/images/icon-comments.png');
 }
 .widget_post_meta .lbp_author {
-  background-image: url('_a/images/icon-author.png');
+  background-image: url('assets/images/icon-author.png');
 }
 .widget_post_meta .lbp_likes a.likeThis {
   padding-right: 0;
@@ -3808,17 +3812,55 @@ aside .widget-themeists_latest_blog_posts .widget_post_meta {
 
    =========================================================================================== *//* ===========================================================================================
 
-	Some basic setup and overrides
+	This one deals with this theme specifically and loads everything needed to add-to or
+	overwrite the styles from the framework above,
 
-	=========================================================================================== */
-/* Theme colours */
+=========================================================================================== */
 /* ===========================================================================================
 
-	Main Header
+	Actify Theme by Themeists. This file overrides the necessary items from our framework
+	to display Autify. We start with generic items (1-6) and then move onto specific elements.
 
-	=========================================================================================== */
+	Table of Contents
+	-----------------
+
+	01 - Generic container classes
+
+	100 - Generic non-desktop helpers
+
+    =========================================================================================== */
+/* Load our custom fonts */
+/* Adjust our font mixins */
+/*.serif_stack()
+{
+	font-family: 'museoslab', Georgia, serif;
+}
+.sans_stack()
+{
+	font-family: "museosans", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 400;
+}*/
 /* ===========================================================================================
 
-	Main Content
+	01 - Generic container classes
 
-	=========================================================================================== */
+    =========================================================================================== */
+/* ===========================================================================================
+
+	100 - Generic non-desktop helpers
+
+    =========================================================================================== */
+img,
+video,
+object,
+embed {
+  max-width: 100%;
+  height: auto;
+}
+/* Video */
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px) {
+  .flex-video {
+    padding-top: 0;
+  }
+}
+/* Longest Media Query Ever */

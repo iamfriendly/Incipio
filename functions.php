@@ -2,183 +2,251 @@
 
 	/* ======================================================================================
 
-	This file acts as a 'loader' for the rest of the framework. The vast majority, you won't
-	want to touch however, for quick and easy adjustments as to what the theme can do on the 
-	back-end then you can simply (un)comment the theme support calls below.
+	All of our theme use our Incipio framework. We instantiate that class below. We load
+	our framework functions in the loader() function and we also add default theme support.
 
-	theme-options
-	layout-builder
-	maintenance-page
-	holding-page
+	You can override what your theme supports in a file called theme_supports.php in a
+	dropins/ directory (in your child theme, naturally). 
 
 	====================================================================================== */
 
-	add_theme_support( 'theme-options' );
-	add_theme_support( 'layout-builder' );
 
-	//This is immediately removed if the WP SEO plugin is installed (see loader.php)
-	add_theme_support( 'incipio-seo' );
-
-	//We register theme support for post types. These are the ones that are shown by the themeistsposttype
-	//plugin when that is activated
-	add_theme_support( 'custom-post-types', array( 'project' ) );
-
-	//Also add support for taxonomies, similar to above
-	add_theme_support( 'custom-taxonomies', array( 'project' => array( 'clients' ) ) );
-
-	add_theme_support( 'post-formats', array( 'aside', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat', 'gallery' ) );
-	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
-	add_theme_support( 'automatic-feed-links' );
-
-	add_theme_support( 'help-in-options-panel' );
-
-	//add_image_size( 'test-image-size', 300, 9999 ); //300 pixels wide ( and unlimited height )
-	//add_image_size( 'test-size-2', 220, 180, true ); //( cropped )
+	if( !class_exists( 'Incipio' ) ) :
 
 
-	/* =================================================================================== */
-
-
-	/**
-	 * We need to run this through after_setup_theme so that we can register support for widgets
-	 *
-	 * @author Richard Tape
-	 * @package 
-	 * @since 1.0
-	 * @param 
-	 * @return 
-	 */
-
-	if( !function_exists( 'incipio_theme_supports' ) ) :
-	
-		function incipio_theme_supports()
+		class Incipio
 		{
 
-			//Also add support for our custom widgets
-			add_theme_support(	'custom-widgets', 
-              	array(
-              		'call-to-action-row', 
-              		'image-widget', 
-              		'latest-blog-posts', 
-              		'quick-flickr-widget'
-              	)
-			);
 
-		}/* incipio_theme_supports */
+			/**
+			 * Initialise ourselves with actions and filters to load all the parts to the
+			 * Incipio framework
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function __construct()
+			{
+
+				//Define constants for our theme, framework, paths etc.
+				add_action( 'after_setup_theme', array( &$this, 'constants' ), 1 );
+
+				//Define what this theme supports
+				add_action( 'after_setup_theme', array( &$this, 'theme_supports' ), 2 );
+
+				//Define theme image sizes
+				add_action( 'after_setup_theme', array( &$this, 'image_sizes' ), 3 );
+
+				//Load our loading script which then goes on to load all our necessary files and functions
+				add_action( 'after_setup_theme', array( &$this, 'loader' ), 4 );
+
+				//Handle internationalisation
+				add_action( 'after_setup_theme', array( &$this, 'internationalisation' ), 5 );
+
+				//Theme update routine
+				add_action( 'after_setup_theme', array( &$this, 'theme_update' ), 6 );
+
+			}/* __construct() */
+
+
+			/* =================================================================================== */
+
+
+			/**
+			 * Define all of the constants for our theme, framework including 
+			 * version numbers, paths, etc.
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function constants()
+			{
+
+				//Define our framework version
+				define( 'INCIPIO_VERSION', '1.0' );
+
+				//Define theme-related constants with support for WP < 3.4
+				if( function_exists( 'wp_get_theme' ) )
+				{
+
+					//We're using WordPress version 3.4+
+					$theme_data = wp_get_theme();
+
+					if( !defined( 'THEMENAME' ) )
+						define( 'THEMENAME', $theme_data->Template );
+					
+					if( !defined( 'THEMEVERSION' ) )
+						define( 'THEMEVERSION', $theme_data->Version );
+
+				}
+				else
+				{
+
+					//We're using WP < 3.4 so don't have access to the wp_get_theme class
+					$theme_data = get_theme_data( get_template_directory() . '/style.css' );
+
+					if( !defined( 'THEMENAME' ) )
+						define( 'THEMENAME', $theme_data['Template'] );
+					
+					if( !defined( 'THEMEVERSION' ) )
+						define( 'THEMEVERSION', $theme_data['Version'] );
+
+				}
+
+			}/* constants() */
+
+
+			/* =================================================================================== */
+
+
+			/**
+			 * Define what our theme supports. First we check for the existence of a file in the
+			 * dropins/ folder called 'theme_supports.php'. If that doesn't exist, we use the
+			 * defaults
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function theme_supports()
+			{
+
+				if( file_exists( locate_template( '/dropins/theme_supports.php', false  ) ) )
+				{
+
+					//There's a file for this theme which dictates what this theme supports. Use it.
+					include locate_template( '/dropins/theme_supports.php' );
+
+				}
+				else
+				{
+
+					//There's no specific file, so use defaults
+					add_theme_support( 'theme-options' );
+
+					add_theme_support( 'post-formats', array( 'aside', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat', 'gallery' ) );
+
+					add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+
+					add_theme_support( 'automatic-feed-links' );
+
+				}
+
+			}/* theme_supports() */
+
+
+			/* =================================================================================== */
+
+
+			/**
+			 * Set up the image sizes for this theme. To do that you load a file in /dropins/ called
+			 * theme_image_sizes.php
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function image_sizes()
+			{
+
+				if( file_exists( locate_template( '/dropins/theme_image_sizes.php', false  ) ) )
+				{
+
+					//There's a file for this theme which dictates theme image sizes.
+					include locate_template( '/dropins/theme_image_sizes.php' );
+
+				}
+
+			}/* image_sizes() */
+
+
+			/**
+			 * Load our necessary functions, files, etc.
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+
+			function loader()
+			{
+
+				require_once locate_template( '/framework/loader.php' );
+
+			}/* loader() */
+
+
+			/* =================================================================================== */
+
+
+			/**
+			 * Handle internationalisation for this theme by loadinf the locale.php file in the
+			 * /languages/ directory if it exists.
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function internationalisation()
+			{
+
+				load_theme_textdomain( THEMENAME, get_template_directory() . '/languages' );
+	
+				$locale = get_locale();
+				$locale_file = "/languages/$locale.php";
+				if ( is_readable( $locale_file ) )
+					require_once locate_template( $locale_file );
+
+			}/* internationalisation() */
+
+
+			/* =================================================================================== */
+
+
+			/**
+			 * Theme update routine from Envato
+			 *
+			 * @author Richard Tape
+			 * @package Incipio
+			 * @since 1.0
+			 * @param None
+			 * @return None
+			 */
+			
+			function theme_update()
+			{
+
+				require_once locate_template( '/framework/admin/update/update-check.php' );
+
+			}/* theme_update() */
+			
+
+
+		}/* class Incipio */
+
 
 	endif;
 
-	add_action( 'after_setup_theme', 'incipio_theme_supports' );
-
-
-
-	/* ======================================================================================
-
-	It's unlikely you'll need to edit below. Any amendments you make should be made in a child
-	theme. If you're unsure how to do that, check out http://codex.wordpress.org/Child_Themes
-
-	====================================================================================== */
-
-	/**
-	 * Set up some constants that are used throughout the theme. Have to check for get_theme_data()
-	 * to support <3.4
-	 *
-	 * @author Richard Tape
-	 * @package Incipio
-	 * @since 1.0
-	 */
-
-	if( function_exists( 'wp_get_theme' ) )
-	{
-
-		$theme_data = wp_get_theme();
-
-		if( !defined( 'THEMENAME' ) )
-			define( 'THEMENAME', $theme_data->Template );
-		
-		if( !defined( 'THEMEVERSION' ) )
-			define( 'THEMEVERSION', $theme_data->Version );
-
-	}
-	else
-	{
-
-		$theme_data = get_theme_data( get_template_directory() . '/style.css' );
-
-		if( !defined( 'THEMENAME' ) )
-			define( 'THEMENAME', $theme_data['Template'] );
-		
-		if( !defined( 'THEMEVERSION' ) )
-			define( 'THEMEVERSION', $theme_data['Version'] );
-
-	}
-
-
-	/* =================================================================================== */
-
-	if( !function_exists( 'remove_chemistry_potion_support' ) ) :
-
-		/**
-		 * Handle the removal of potions
-		 *
-		 * @author Richard Tape
-		 * @package Chemistry
-		 * @since 0.7
-		 * @param (array) $potions_to_use - the list of all available potions
-		 * @return (array) $potions_to_use - The modified list
-		 */
-		
-		function remove_chemistry_potion_support( $potions_to_use )
-		{
-
-			//$unsupported_potions = array( 'plain_text', 'single_image' );
-			/*
-			foreach( $unsupported_potions as $potion )
-				$potions_to_use[ 'chemistry_potion_' . $potion] = false;
-
-			return $potions_to_use;
-			*/
-
-		}/* remove_chemistry_potion_support() */
-
-	endif;
-
-	//add_filter( 'chemistry_potions', 'remove_chemistry_potion_support', 10, 1 );
-
-
-	/* =================================================================================== */
-
-
-	/**
-	 * Now we have set what this theme supports we need to load the core framework files
-	 *
-	 * @author Richard Tape
-	 * @package Incipio
-	 * @since 1.0
-	 */
-	
-
-	require_once locate_template( '/framework/loader.php' );
-
-
-	/* =================================================================================== */
-
-
-	/**
-	 * Handle internationalisation
-	 *
-	 * @author Richard Tape
-	 * @package Incipio
-	 * @since 1.0
-	 */
-
-	load_theme_textdomain( THEMENAME, get_template_directory() . '/languages' );
-	
-	$locale = get_locale();
-	$locale_file = "/languages/$locale.php";
-	if ( is_readable( $locale_file ) )
-		require_once locate_template( $locale_file );
-
+	$Incipio = new Incipio;
 
 
 ?>

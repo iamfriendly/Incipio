@@ -8,8 +8,13 @@
 	
 	$folder = "_sidebars/";
 	$includes = array(
+	
+		/* Register primary first as WP has a habbit of dumping all widgets into the 1st sidebar on setup */
+		'primary',
+
+		'logo_bar',
+		'main_menu'
 		
-		'primary'
 		
 	);
 	

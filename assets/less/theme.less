@@ -1,0 +1,88 @@
+/* ===========================================================================================
+
+	Actify Theme by Themeists. This file overrides the necessary items from our framework
+	to display Autify. We start with generic items (1-6) and then move onto specific elements.
+
+	Table of Contents
+	-----------------
+
+	01 - Generic container classes
+
+	100 - Generic non-desktop helpers
+
+    =========================================================================================== */
+
+
+/* Load our custom fonts */
+//@import 'assets/less/fonts.less';
+
+/* Adjust our font mixins */
+/*.serif_stack()
+{
+	font-family: 'museoslab', Georgia, serif;
+}
+.sans_stack()
+{
+	font-family: "museosans", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 400;
+}*/
+
+
+@black:				rgb(0,0,0);
+@grayDarker:		rgb(34,34,34);
+@grayDark:			rgb(51,51,51);
+@gray:				rgb(85,85,85);
+@grayMid:			rgb(115,115,115);
+@grayLight:			rgb(153,153,153);
+@grayLighter:		rgb(202,202,202);
+@grayLightest:		rgb(242,242,242);
+@white:				rgb(255,255,255);
+
+@blue:				rgb(0,166,252);
+@blueDark:			darken(@blue, 15%);
+@green:				rgb(118,195,139);
+@red:				rgb(224,81,75);
+@yellow:			rgb(233,212,147);
+@orange:			rgb(248,148,6);
+@pink:				rgb(195,50,95);
+@purple:			rgb(122,67,182);
+
+@linkColor:			@red;
+@linkColorHover:	@grayLighter;
+@mainTextColour:	@black;
+
+/* ===========================================================================================
+
+	01 - Generic container classes
+
+    =========================================================================================== */
+
+
+
+/* ===========================================================================================
+
+	100 - Generic non-desktop helpers
+
+    =========================================================================================== */
+
+
+img,
+video,
+object,
+embed
+{
+	max-width: 100%;
+	height: auto;
+}
+	
+/* Video */
+	
+@media only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)
+{
+
+	.flex-video
+	{
+		padding-top: 0;
+	}
+	
+}/* Longest Media Query Ever */

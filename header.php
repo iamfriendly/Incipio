@@ -6,7 +6,7 @@
 	It contains the <head> part of your site (so most things for SEO) as well as loads in the 
 	necessary parts of the framework. We load *some* js here through necessity but we load as 
 	much as we can in the footer so the page loads more quickly for people. You'll find the 
-	loading of the js/css in /inc/framework_functions.php
+	loading of the js/css in /framework/framework_functions.php
 
 	====================================================================================== */
 
@@ -38,7 +38,7 @@
 		
 		<?php wp_head(); ?>
 		
-		<script>window.jQuery || document.write( '<script src="<?php echo get_template_directory_uri(); ?>/_a/js/jquery.js">\x3C/script>' )</script>
+		<script>window.jQuery || document.write( '<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.js">\x3C/script>' )</script>
 		
 		<?php /* ============================================================================= */ ?>
 
@@ -50,16 +50,13 @@
 
 			/* ==============================================================================
 
-			This theme, by default doesn't output any markup whatsoever. We leave that to you.
-			However there are loads of hooks for you to do that should you wish to do it that 
-			way, or you can hard-code your markup! Go for your life.
+			The <header> tag for our theme is output using the following actions. The opening
+			is output is hooked into incipio_after_open_body_tag
+
+			These are in /dropins/theme_functions.php
 
 			============================================================================== */
 
 		?>
 
 		<?php do_action( 'incipio_after_open_body_tag' ); ?>
-
-			<?php do_action( 'incipio_inside_main_header_tag' ); ?>
-
-		<?php do_action( 'incipio_after_main_header_tag' ); ?>

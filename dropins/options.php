@@ -51,6 +51,29 @@
 	}
 
 
+	/* =================================================================================== */
+
+	/**
+	 * The install video url passed to the options framework
+	 *
+	 * @author Richard Tape
+	 * @package Incipio
+	 * @since 1.0
+	 * @param None
+	 * @return (string) iframe src
+	 */
+	
+	function incipio_install_vid_url()
+	{
+
+		return '<iframe src="http://player.vimeo.com/video/57135411?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="800" height="450" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+
+	}/* incipio_install_vid_url() */
+
+	add_filter( 'incipio_install_video_src', 'incipio_install_vid_url', 10, 1 );
+
+
+	/* =================================================================================== */
 
 
 	/* Some examples */

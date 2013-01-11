@@ -40,9 +40,15 @@
 	 */
 
 	if( current_theme_supports( 'theme-options' ) && current_theme_supports( 'help-in-options-panel' ) )
-		require_once locate_template( '/dropins/help.php' );
-	
+	{
 
+		if( file_exists( locate_template( '/dropins/help.php', false  ) ) ) :
+		
+			include locate_template( '/dropins/help.php' );
+	
+		endif;
+
+	}
 
 
 
